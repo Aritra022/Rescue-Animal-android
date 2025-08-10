@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Login Page Essential Colors -->
+
+    <!-- Primary Brand Color -->
+    <color name="primary_color">#2E7D32</color>          <!-- Forest Green - logo, login button, links -->
+
+    <!-- Background Colors -->
+    <color name="background_light">#F5F5F5</color>       <!-- Main login screen background -->
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>           <!-- App title, form labels -->
+    <color name="text_secondary">#757575</color>
+</resources>

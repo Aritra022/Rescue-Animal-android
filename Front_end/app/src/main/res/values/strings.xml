@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Rescue Pets</string>
+    <string name="logo">Logo</string>
+    <string name="register_account">Register your account</string>
+    <string name="join_and_help">Join and help rescue animals!!</string>
+</resources>

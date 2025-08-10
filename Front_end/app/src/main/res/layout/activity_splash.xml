@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/system_accent2_200">
+
+    <!-- Centered Logo -->
+    <ImageView
+        android:id="@+id/splash_logo"
+        android:layout_width="146dp"
+        android:layout_height="138dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="App Logo"
+        android:src="@drawable/dog_removebg_preview" />
+
+    <!-- App Name -->
+
+</RelativeLayout>

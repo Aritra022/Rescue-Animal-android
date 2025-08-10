@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#673AB7"
+    android:fillViewport="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/admin"
+      android:gravity="center_horizontal"
+      android:orientation="vertical"
+      android:padding="24dp">
+
+    <!-- Top Logo -->
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="194dp"
+        android:layout_height="163dp"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="Dog Cat Logo"
+        android:src="@drawable/dog_removebg_preview" />
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Upload Pet"
+        android:textColor="#F4EEEE"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Fill out the details below"
+        android:textColor="#EBE6E6"
+        android:textSize="14sp" />
+
+    <!-- Card Background -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+      <!-- Pet Type -->
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Pet Type"
+          android:textStyle="bold" />
+
+      <EditText
+          android:id="@+id/et_pet_type"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp"
+          android:background="@android:drawable/edit_text"
+          android:hint="Enter pet type (e.g., Dog, Cat)"
+          android:padding="10dp" />
+
+      <!-- Description -->
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Description"
+          android:textStyle="bold" />
+
+      <EditText
+          android:id="@+id/et_description"
+          android:layout_width="match_parent"
+          android:layout_height="100dp"
+          android:layout_marginBottom="10dp"
+          android:background="@android:drawable/edit_text"
+          android:gravity="top"
+          android:hint="Enter description"
+          android:padding="10dp" />
+
+      <!-- Address -->
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Address"
+          android:textStyle="bold" />
+
+      <EditText
+          android:id="@+id/et_address"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp"
+          android:background="@android:drawable/edit_text"
+          android:hint="Enter address"
+          android:padding="10dp" />
+
+      <!-- Status -->
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Status"
+          android:textStyle="bold" />
+
+      <Spinner
+          android:id="@+id/spinner_status"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp" />
+
+      <!-- Pet Image -->
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Pet Image"
+          android:textStyle="bold" />
+
+      <ImageView
+          android:id="@+id/iv_pet_image"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          android:layout_marginBottom="10dp"
+          android:background="#CCCCCC"
+          android:scaleType="centerCrop" />
+
+      <Button
+          android:id="@+id/btn_choose_image"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Choose Image" />
+
+      <!-- Submit -->
+      <Button
+          android:id="@+id/btn_upload_pet"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:backgroundTint="#4CAF50"
+          android:text="Upload"
+          android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+  </LinearLayout>
+</ScrollView>

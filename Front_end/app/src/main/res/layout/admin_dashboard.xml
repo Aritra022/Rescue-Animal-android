@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cute"
+    android:padding="16dp">
+
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="WELCOME BACK ADMIN"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <!-- Vertical Button Container -->
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="382dp"
+        android:layout_height="360dp"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="278dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/admin_manage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Manage Users"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/admin_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="View Reports"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/admin_set"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Settings"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⎋ Logout"
+            android:textAllCaps="false"
+            android:textColorLink="#E4D2D2" />
+    </LinearLayout>
+
+</RelativeLayout>
