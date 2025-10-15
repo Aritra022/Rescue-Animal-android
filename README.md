@@ -1,5 +1,9 @@
 # 🐾 Rescue Animal Android App
 
+
+<img width="1024" height="1536" alt="03c2d686-9989-4d87-838d-e83f25b939c5" src="https://github.com/user-attachments/assets/90496b72-751e-4bf8-8795-20d505bcd0ff" />
+
+
 **Rescue Animal** is a community-driven mobile application designed to help rescue, feed, and rehome animals in need.  
 It connects **donors**, **volunteers**, and **adopters** through a single platform, ensuring that no food or animal care resources go to waste.
 
