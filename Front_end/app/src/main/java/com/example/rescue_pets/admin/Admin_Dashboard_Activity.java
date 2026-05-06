@@ -9,6 +9,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rescue_pets.R;
+import android.content.Intent;
+
+
+import android.content.Intent;
 
 public class Admin_Dashboard_Activity extends AppCompatActivity {
 
@@ -23,26 +27,23 @@ public class Admin_Dashboard_Activity extends AppCompatActivity {
         admin_view = findViewById(R.id.admin_view);
         admin_set = findViewById(R.id.admin_set);
 
-        admin_manage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Admin_Dashboard_Activity.this, "Manage Pets/Users", Toast.LENGTH_SHORT).show();
-                // startActivity(new Intent(...));
-            }
+        admin_manage.setOnClickListener(v -> {
+            startActivity(new Intent(
+                    Admin_Dashboard_Activity.this,
+                    ManageUsersListActivity.class
+            ));
         });
-
-        admin_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Admin_Dashboard_Activity.this, "View Reports/Data", Toast.LENGTH_SHORT).show();
-            }
+        admin_view.setOnClickListener(v -> {
+            startActivity(new Intent(
+                    Admin_Dashboard_Activity.this,
+                    ManageRequestsListActivity.class
+            ));
         });
-
-        admin_set.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Admin_Dashboard_Activity.this, "Settings", Toast.LENGTH_SHORT).show();
-            }
+        admin_set.setOnClickListener(v -> {
+            startActivity(new Intent(
+                    Admin_Dashboard_Activity.this,
+                    ManageVolunteersListActivity.class
+            ));
         });
     }
 }

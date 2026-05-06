@@ -23,6 +23,8 @@ app.get('/', function (req, res) {
     res.send("This is Home Page of Pet REscue Department....!!!")
 });
 
+
+
 // To serve uploaded files
 app.use('/Uploads', express.static('uploads'));
 

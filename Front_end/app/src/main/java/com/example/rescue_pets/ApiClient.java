@@ -1,11 +1,12 @@
+package com.example.rescue_pets;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient{
-
-    private static final String BASE_URL = "http://192.168.0.119:4000/pets/upload"; // change this
+public class ApiClient {
+    private static final String BASE_URL = MyIP.IP_ADDRESS; // change to your backend
+    //private static final String BASE_URL = "http://192.168.31.130:4000/";
 
     public static Retrofit getClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();

@@ -23,7 +23,7 @@
     <LinearLayout
         android:id="@+id/button_container"
         android:layout_width="395dp"
-        android:layout_height="322dp"
+        android:layout_height="386dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:gravity="center"
@@ -67,15 +67,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C62828"
-            android:padding="14dp"
-            android:text="🚪  Logout"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
+
     </LinearLayout>
 
 </RelativeLayout>

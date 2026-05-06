@@ -1,0 +1,6 @@
+node_modules/
+.env
+Uploads/
+controller/serviceAccountKey.json
+Front_end/.idea/
+Front_end/.gradle/

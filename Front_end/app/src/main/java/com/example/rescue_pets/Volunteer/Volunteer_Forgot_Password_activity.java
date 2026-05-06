@@ -1,6 +1,5 @@
 package com.example.rescue_pets.Volunteer;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.rescue_pets.EnterOtpActivity;
+import com.example.rescue_pets.MyIP;
 import com.example.rescue_pets.R;
 
 import java.util.HashMap;
@@ -40,53 +38,45 @@ public class Volunteer_Forgot_Password_activity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         signup = findViewById(R.id.signup);
 
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = etEmail.getText().toString().trim();
+        btnResetPassword.setOnClickListener(v -> {
+            String email = etEmail.getText().toString().trim();
 
-                if (email.isEmpty()) {
-                    Toast.makeText(Volunteer_Forgot_Password_activity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
-                } else {
-                    sendResetLink(email);
-                }
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show();
+            } else {
+                sendOtp(email);
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Volunteer_Forgot_Password_activity.this, Volunteer_login_activity.class);
-                startActivity(intent);
-                finish();
-            }
+        signup.setOnClickListener(v -> {
+            startActivity(new Intent(this, Volunteer_login_activity.class));
+            finish();
         });
     }
 
-    private void sendResetLink(String email) {
+    private void sendOtp(String email) {
         progressBar.setVisibility(View.VISIBLE);
         btnResetPassword.setEnabled(false);
 
-        String url = "http://192.168.0.119:4000/vol/forgot-password"; // Update this to your real backend endpoint
+        String url = MyIP.IP_ADDRESS +"vol/forgot-password";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressBar.setVisibility(View.GONE);
-                        btnResetPassword.setEnabled(true);
-                        Toast.makeText(getApplicationContext(), "📩 Reset link sent to your email", Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressBar.setVisibility(View.GONE);
-                        btnResetPassword.setEnabled(true);
-                        Toast.makeText(getApplicationContext(), "❌ Failed to send reset link", Toast.LENGTH_LONG).show();
-                    }
-                }) {
+                response -> {
+                    progressBar.setVisibility(View.GONE);
+                    btnResetPassword.setEnabled(true);
 
+                    Toast.makeText(this, "OTP sent to your email", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Volunteer_Forgot_Password_activity.this, EnterOtpActivity.class);
+                    intent.putExtra("email", email);
+                    intent.putExtra("role", "vol");
+                    startActivity(intent);
+                },
+                error -> {
+                    progressBar.setVisibility(View.GONE);
+                    btnResetPassword.setEnabled(true);
+                    Toast.makeText(this, "Failed to send OTP", Toast.LENGTH_SHORT).show();
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -95,7 +85,6 @@ public class Volunteer_Forgot_Password_activity extends AppCompatActivity {
             }
         };
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(request);
+        Volley.newRequestQueue(this).add(request);
     }
 }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.rescue_pets.MyIP;
 import com.example.rescue_pets.R;
 
 import org.json.JSONObject;
@@ -30,7 +31,8 @@ public class Admin_Login_Activity extends AppCompatActivity {
     ProgressBar progressBar;
 
     // <-- set this to your backend admin login endpoint
-    private static final String LOGIN_URL = "http://192.168.31.170:4000/admin/login";
+    private static final String LOGIN_URL = MyIP.IP_ADDRESS +"admin/login";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

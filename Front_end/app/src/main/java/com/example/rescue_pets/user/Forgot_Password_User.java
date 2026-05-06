@@ -1,6 +1,5 @@
 package com.example.rescue_pets.user;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.rescue_pets.EnterOtpActivity;
+import com.example.rescue_pets.MyIP;
 import com.example.rescue_pets.R;
 
 import java.util.HashMap;
@@ -26,12 +26,13 @@ public class Forgot_Password_User extends AppCompatActivity {
     EditText etEmail;
     Button btnResetPassword;
     ProgressBar progressBar;
-    LinearLayout signup; // The "Login" link
+    LinearLayout signup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password_user); // Make sure this matches your XML file name
+        setContentView(R.layout.activity_forgot_password_user);
 
         etEmail = findViewById(R.id.etEmail);
         btnResetPassword = findViewById(R.id.btnResetPassword);
@@ -42,46 +43,49 @@ public class Forgot_Password_User extends AppCompatActivity {
             String email = etEmail.getText().toString().trim();
 
             if (email.isEmpty()) {
-                Toast.makeText(this, "Please enter your registered email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Enter your email", Toast.LENGTH_SHORT).show();
             } else {
-                sendResetRequest(email);
+                sendOtp(email);
             }
         });
 
-        // Go back to login screen
         signup.setOnClickListener(v -> {
-            startActivity(new Intent(Forgot_Password_User.this, User_login_activity.class));
+            startActivity(new Intent(this, User_login_activity.class));
             finish();
         });
     }
 
-    private void sendResetRequest(String email) {
-        String url = "http://192.168.31.170:4000/user/forgot-password"; // Replace with your actual backend API
-
+    private void sendOtp(String email) {
         progressBar.setVisibility(View.VISIBLE);
         btnResetPassword.setEnabled(false);
+
+        String url = MyIP.IP_ADDRESS +"user/forgot-password";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     progressBar.setVisibility(View.GONE);
                     btnResetPassword.setEnabled(true);
-                    Toast.makeText(this, "✔️ Reset link sent to email", Toast.LENGTH_LONG).show();
-                    finish(); // Go back to login
+
+                    Toast.makeText(this, "OTP sent to your email", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Forgot_Password_User.this, EnterOtpActivity.class);
+                    intent.putExtra("email", email);
+                    intent.putExtra("role", "user");
+                    startActivity(intent);
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
                     btnResetPassword.setEnabled(true);
-                    Toast.makeText(this, "❌ Failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Failed to send OTP", Toast.LENGTH_SHORT).show();
                 }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> data = new HashMap<>();
-                data.put("email", email);
-                return data;
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                return params;
             }
         };
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        queue.add(request);
+        Volley.newRequestQueue(this).add(request);
     }
 }

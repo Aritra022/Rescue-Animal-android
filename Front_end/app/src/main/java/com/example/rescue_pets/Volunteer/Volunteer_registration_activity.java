@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.rescue_pets.MyIP;
 import com.example.rescue_pets.R;
 
 import org.json.JSONException;
@@ -70,7 +71,7 @@ public class Volunteer_registration_activity extends AppCompatActivity {
                 return;
             }
 
-            String url = "http://192.168.0.119:4000/vol/register"; // replace this with your actual backend route
+            String url = MyIP.IP_ADDRESS +"vol/register"; // replace this with your actual backend route
             registerVolunteer(url, name, email, contact, password, location);
         });
 

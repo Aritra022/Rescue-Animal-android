@@ -3,4 +3,9 @@
     <string name="logo">Logo</string>
     <string name="register_account">Register your account</string>
     <string name="join_and_help">Join and help rescue animals!!</string>
+    <string-array name="status_type">
+        <item>Choose</item>
+        <item>Pending</item>
+
+    </string-array>
 </resources>

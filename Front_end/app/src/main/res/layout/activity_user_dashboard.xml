@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
-        android:layout_marginTop="341dp"
+        android:layout_marginTop="350dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="24dp">
@@ -31,21 +31,21 @@
             android:id="@+id/admin_manage"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="🚨  Request Rescue" />
+            android:text="Report Status 📋" />
 
         <Button
             android:id="@+id/admin_view"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:text="👤  Profile" />
+            android:text="Upload Pet🐶" />
 
         <Button
             android:id="@+id/admin_set"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:text="🦴  View Available Pets" />
+            android:text="👤  Profile" />
 
         <Button
             android:id="@+id/btnLogout"

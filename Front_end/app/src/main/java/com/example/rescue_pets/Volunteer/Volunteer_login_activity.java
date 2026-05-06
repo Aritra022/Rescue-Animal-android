@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.rescue_pets.MyIP;
 import com.example.rescue_pets.R;
 
 import org.json.JSONException;
@@ -56,7 +57,9 @@ public class Volunteer_login_activity extends AppCompatActivity {
                     return;
                 }
 
-                String url = "http://192.168.31.170:4000/vol/login"; // Replace with your actual server URL
+                String url = MyIP.IP_ADDRESS +"vol/login"; // Replace with your actual server URL
+               
+
                 loginUser(url, email, password);
             }
         });
@@ -99,10 +102,13 @@ public class Volunteer_login_activity extends AppCompatActivity {
 
                                 if (!userId.isEmpty()) {
                                     Toast.makeText(getApplicationContext(), "✅ Login Success", Toast.LENGTH_LONG).show();
-                                    SharedPreferences prefs = getSharedPreferences("VolunteerSession", MODE_PRIVATE);
+                                    SharedPreferences prefs = getSharedPreferences("VolunteerPrefs", MODE_PRIVATE);
                                     SharedPreferences.Editor editor = prefs.edit();
-                                    String volunteerIdFromServer = "";
-                                    editor.putString("volunteerId", volunteerIdFromServer); // Replace with actual ID from API
+                                    editor.putString("_id", user.optString("_id"));
+                                    editor.putString("volName", user.optString("name"));
+                                    editor.putString("volEmail", user.optString("email"));
+                                    editor.putString("volPhone", user.optString("contact"));
+                                    editor.putString("volLocation", user.optString("location"));
                                     editor.apply();
 
                                     Intent intent = new Intent(Volunteer_login_activity.this, Volunteer_Dashboard_activity.class);

@@ -9,6 +9,8 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: String
     },
+
+    
     password: {
         required: true,
         type: String
@@ -20,7 +22,13 @@ const dataSchema = new mongoose.Schema({
     location: {
         required: true,
         type: String
-    }
+    },
+
+    status: {
+    type: String,
+    default: "active"
+}
+   
 });
 
 module.exports = mongoose.model('Volunteer', dataSchema);

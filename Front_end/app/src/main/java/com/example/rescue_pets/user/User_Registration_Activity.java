@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.rescue_pets.MyIP;
 import com.example.rescue_pets.R;
 
 import org.json.JSONException;
@@ -73,7 +74,9 @@ public class User_Registration_Activity extends AppCompatActivity {
                 }
 
                 // Replace with your actual server IP
-                String url = "http://192.168.31.170:4000/user/register";
+               // String url = "http://192.168.31.130:4000/user/register";
+                String url = MyIP.IP_ADDRESS +"user/register";
+
                 insertData(url, name, email, contact, password, location);
             }
         });

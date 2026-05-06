@@ -8,7 +8,7 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@drawable/admin"
+      android:background="@drawable/button_background"
       android:gravity="center_horizontal"
       android:orientation="vertical"
       android:padding="24dp">
@@ -57,12 +57,11 @@
           android:text="Pet Type"
           android:textStyle="bold" />
 
-      <EditText
-          android:id="@+id/et_pet_type"
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/PetType"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="10dp"
-          android:background="@android:drawable/edit_text"
           android:hint="Enter pet type (e.g., Dog, Cat)"
           android:padding="10dp" />
 
@@ -73,12 +72,11 @@
           android:text="Description"
           android:textStyle="bold" />
 
-      <EditText
-          android:id="@+id/et_description"
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/PetDescription"
           android:layout_width="match_parent"
           android:layout_height="100dp"
           android:layout_marginBottom="10dp"
-          android:background="@android:drawable/edit_text"
           android:gravity="top"
           android:hint="Enter description"
           android:padding="10dp" />
@@ -90,16 +88,15 @@
           android:text="Address"
           android:textStyle="bold" />
 
-      <EditText
-          android:id="@+id/et_address"
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/PetAddress"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="10dp"
-          android:background="@android:drawable/edit_text"
           android:hint="Enter address"
           android:padding="10dp" />
 
-      <!-- Status -->
+      <!-- Pet Image -->
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -107,10 +104,11 @@
           android:textStyle="bold" />
 
       <Spinner
-          android:id="@+id/spinner_status"
+          android:id="@+id/PetStatus"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="10dp" />
+          android:layout_marginBottom="10dp"
+          android:entries="@array/status_type" />
 
       <!-- Pet Image -->
       <TextView
@@ -122,20 +120,21 @@
       <ImageView
           android:id="@+id/iv_pet_image"
           android:layout_width="match_parent"
-          android:layout_height="200dp"
+          android:layout_height="251dp"
           android:layout_marginBottom="10dp"
           android:background="#CCCCCC"
           android:scaleType="centerCrop" />
 
+
       <Button
-          android:id="@+id/btn_choose_image"
+          android:id="@+id/btnUploadPet"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Choose Image" />
 
       <!-- Submit -->
       <Button
-          android:id="@+id/btn_upload_pet"
+          android:id="@+id/btnSubmitPet"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="20dp"
