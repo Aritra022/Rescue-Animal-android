@@ -56,7 +56,9 @@ router.post('/upload', multer.single('image'), async (req, res) => {
             userEmail,
             latitude,
             longitude,
-            image: req.file.filename
+            image: req.file.path,
+            imagePublicId: req.file.filename
+
         });
 
         await newPet.save();

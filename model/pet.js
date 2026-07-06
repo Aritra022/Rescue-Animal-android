@@ -7,24 +7,34 @@ const petSchema = new mongoose.Schema({
     upload_date_time: {
         type: Date,
         default: Date.now,
-        expires : 60 * 60 * 12   //12 hours format
+        expires: 60 * 60 * 12 // 12 hours
     },
 
     address: String,
     status: String,
-    image: String,
+
+    // Cloudinary image URL
+    image: {
+        type: String,
+        required: true
+    },
+
+    // Cloudinary public_id (used for deleting the image later)
+    imagePublicId: {
+        type: String
+    },
+
     userEmail: String,
 
-    // 🔥 NEW FIELDS (for map)
     latitude: {
         type: Number,
         default: null
     },
+
     longitude: {
         type: Number,
         default: null
     }
-
 });
 
-module.exports = mongoose.model('Pet', petSchema);
+module.exports = mongoose.model("Pet", petSchema);
