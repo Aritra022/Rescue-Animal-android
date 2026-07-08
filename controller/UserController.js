@@ -8,6 +8,24 @@ const User = require('../model/User');
 const nodemailer = require('nodemailer');
 const otpStore = new Map();
 
+// Nodemailer Transporter
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+// Verify SMTP connection (optional but recommended)
+transporter.verify((error, success) => {
+    if (error) {
+        console.error("SMTP Error:", error);
+    } else {
+        console.log("SMTP Server Ready");
+    }
+});
+
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -168,51 +186,56 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-// ✅ Forget Password
+// ✅ Forgot Password
 router.post('/forgot-password', async (req, res) => {
     try {
         const { email } = req.body;
 
         const user = await User.findOne({ email });
+
         if (!user) {
-            return res.status(404).json({ message: "Email not found" });
+            return res.status(404).json({
+                message: "Email not found"
+            });
         }
 
         const now = Date.now();
         const existing = otpStore.get(email);
 
         if (existing && (now - existing.createdAt) < 2 * 60 * 1000) {
-            return res.status(200).json({ message: "OTP already sent" });
+            return res.status(200).json({
+                message: "OTP already sent"
+            });
         }
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
         otpStore.set(email, {
-            otp: otp,
+            otp,
             createdAt: now
         });
 
-        try {
-    const info = await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: "User Password Reset OTP",
-        text: `Your OTP is ${otp}`
-    });
+        const info = await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: "User Password Reset OTP",
+            text: `Your OTP is ${otp}`
+        });
 
-    console.log("Mail sent:", info.response);
-} catch (err) {
-    console.error("Mail error:", err);
-}
+        console.log("Mail sent:", info.response);
 
-        return res.status(200).json({ message: "OTP sent successfully" });
+        return res.status(200).json({
+            message: "OTP sent successfully"
+        });
+
     } catch (error) {
-        console.error("User forgot password error:", error);
-        return res.status(500).json({ message: "Internal Server Error" });
+        console.error("Forgot Password Error:", error);
+
+        return res.status(500).json({
+            message: "Failed to send OTP"
+        });
     }
 });
-
-
 // VERIFY OTP
 router.post('/verify-otp', (req, res) => {
     try {
