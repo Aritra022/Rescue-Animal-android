@@ -7,14 +7,20 @@ const multer = require('multer');
 const User = require('../model/User');
 const nodemailer = require('nodemailer');
 const otpStore = new Map();
+const dns = require("dns");
 
-// Nodemailer Transporter
 const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
+        pass: process.env.EMAIL_PASS,
+    },
+    tls: {
+        rejectUnauthorized: false
+    },
+    family: 4
 });
 
 // Verify SMTP connection (optional but recommended)
