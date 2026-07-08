@@ -167,6 +167,8 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 });
+
+// ✅ Forget Password
 router.post('/forgot-password', async (req, res) => {
     try {
         const { email } = req.body;
@@ -190,20 +192,18 @@ router.post('/forgot-password', async (req, res) => {
             createdAt: now
         });
 
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
+        try {
+    const info = await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: "User Password Reset OTP",
+        text: `Your OTP is ${otp}`
+    });
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: email,
-            subject: 'User Password Reset OTP',
-            text: `Your OTP is ${otp}`
-        });
+    console.log("Mail sent:", info.response);
+} catch (err) {
+    console.error("Mail error:", err);
+}
 
         return res.status(200).json({ message: "OTP sent successfully" });
     } catch (error) {
