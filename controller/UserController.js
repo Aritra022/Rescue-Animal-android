@@ -1,4 +1,6 @@
 require('dotenv').config();
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS EXISTS:", !!process.env.EMAIL_PASS);
 const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
@@ -10,28 +12,22 @@ const otpStore = new Map();
 const dns = require("dns");
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    service: "gmail",
     auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-    tls: {
-        rejectUnauthorized: false
-    },
-    family: 4
+        pass: process.env.EMAIL_PASS
+    }
 });
-
 // Verify SMTP connection (optional but recommended)
 transporter.verify((error, success) => {
     if (error) {
-        console.error("SMTP Error:", error);
+        console.error("=========== SMTP ERROR ===========");
+        console.error(error);
+        console.error("==================================");
     } else {
         console.log("SMTP Server Ready");
     }
 });
-
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -197,6 +193,12 @@ router.post('/forgot-password', async (req, res) => {
     try {
         const { email } = req.body;
 
+        if (!email) {
+            return res.status(400).json({
+                message: "Email is required"
+            });
+        }
+
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -210,7 +212,7 @@ router.post('/forgot-password', async (req, res) => {
 
         if (existing && (now - existing.createdAt) < 2 * 60 * 1000) {
             return res.status(200).json({
-                message: "OTP already sent"
+                message: "OTP already sent. Please wait."
             });
         }
 
@@ -221,24 +223,47 @@ router.post('/forgot-password', async (req, res) => {
             createdAt: now
         });
 
+        console.log("Sending OTP to:", email);
+
         const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: `"Pet Rescue" <${process.env.EMAIL_USER}>`,
             to: email,
-            subject: "User Password Reset OTP",
-            text: `Your OTP is ${otp}`
+            subject: "Password Reset OTP",
+            html: `
+                <div style="font-family:Arial,sans-serif">
+                    <h2>Pet Rescue</h2>
+
+                    <p>Your OTP for password reset is:</p>
+
+                    <h1 style="letter-spacing:4px">${otp}</h1>
+
+                    <p>This OTP will expire in 2 minutes.</p>
+
+                    <p>If you did not request this, ignore this email.</p>
+                </div>
+            `
         });
 
-        console.log("Mail sent:", info.response);
+        console.log("Mail sent successfully");
+        console.log(info);
 
         return res.status(200).json({
+            success: true,
             message: "OTP sent successfully"
         });
 
     } catch (error) {
-        console.error("Forgot Password Error:", error);
+
+        console.error("=========== EMAIL ERROR ===========");
+        console.error(error);
+        console.error("Message:", error.message);
+        console.error("Code:", error.code);
+        console.error("Response:", error.response);
+        console.error("===================================");
 
         return res.status(500).json({
-            message: "Failed to send OTP"
+            success: false,
+            message: error.message
         });
     }
 });
