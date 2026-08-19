@@ -93,7 +93,7 @@ Rescue-Animal-android/
 
 ## 🔔 Notifications
 
-<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12" src="https://github.com/user-attachments/assets/14d0076a-6a7e-42fb-82b0-4fb201fdccf8" />
+
 
 
 ## 🗄️ Database
