@@ -117,10 +117,6 @@ Add screenshots here.
 screenshots
 <img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12" src="https://github.com/user-attachments/assets/f758e05c-8303-42f2-8013-ff6dbb8be289" />
 
-<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12 (2)" src="https://github.com/user-attachments/assets/d1d2fa87-9072-4048-8d49-
-7c212ab61730" />
-
-
 
 
 
