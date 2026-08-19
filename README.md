@@ -114,8 +114,9 @@ MongoDB stores:
 Add screenshots here.
 
 ```
-screenshots/
-├── login.png
+screenshots
+![Uploading image.png…]()
+
 ├── register.png
 ├── dashboard.png
 ├── report.png
