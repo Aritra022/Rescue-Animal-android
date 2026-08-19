@@ -115,16 +115,28 @@ Add screenshots here.
 
 ```
 screenshots
-![Uploading image.png…]()
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12" src="https://github.com/user-attachments/assets/f758e05c-8303-42f2-8013-ff6dbb8be289" />
 
-├── register.png
-├── dashboard.png
-├── report.png
-└── volunteer_dashboard.png
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12 (2)" src="https://github.com/user-attachments/assets/d1d2fa87-9072-4048-8d49-
+7c212ab61730" />
+
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12 (1)" src="https://github.com/user-attachments/assets/f5023ca7-3ef1-40fd-86b1-9f0b04838a31" />
+
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12 (3)" src="https://github.com/user-attachments/assets/696ea830-402b-4e9d-ac04-972148877cbc" />
+
+<img width="426" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 13" src="https://github.com/user-attachments/assets/bea36aac-ae81-4337-8d8c-98e05cccf7f4" />
+
+<img width="1260" height="2800" alt="WhatsApp Image 2026-08-19 at 14 27 13 (1)" src="https://github.com/user-attachments/assets/8aec9eed-e539-411c-8c3b-6e11da19fa8b" />
+
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 13 (2)" src="https://github.com/user-attachments/assets/e0e1fb38-a404-47d5-b5ed-555954206519" />
+
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 14" src="https://github.com/user-attachments/assets/302f2948-68c5-41b2-8cc3-46a83607912c" />
+
+<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 14 (1)" src="https://github.com/user-attachments/assets/5d56b6cc-f763-43d3-89d6-e2b2846396da" />
+
+
+
 ```
-
----
-
 ## ⚙️ Installation
 
 ### Clone Repository
