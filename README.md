@@ -110,11 +110,8 @@ MongoDB stores:
 
 ## 📸 Screenshots
 
-Add screenshots here.
+<img width="1200" height="1600" alt="WhatsApp Image 2026-08-19 at 14 43 40" src="https://github.com/user-attachments/assets/12ffa1d2-ea98-4762-9f64-c9ea420390a6" />
 
-```
-screenshots
-<![Uploading WhatsApp Image 2026-08-19 at 14.27.12.jpeg…]()
 
 
 
