@@ -115,8 +115,7 @@ Add screenshots here.
 
 ```
 screenshots
-<img width="576" height="1280" alt="WhatsApp Image 2026-08-19 at 14 27 12" src="https://github.com/user-attachments/assets/f758e05c-8303-42f2-8013-ff6dbb8be289" />
-
+<![Uploading WhatsApp Image 2026-08-19 at 14.27.12.jpeg…]()
 
 
 
