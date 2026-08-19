@@ -4,7 +4,7 @@ An Android application that helps users report injured or stray animals and allo
 
 ---
 
-<img width="1238" height="622" alt="WhatsApp Image 2026-08-19 at 13 51 38 (1)" src="https://github.com/user-attachments/assets/256d7b75-dbed-4cf9-8f90-383d327a19f4" />
+
 
 
 ## 📱 Features
