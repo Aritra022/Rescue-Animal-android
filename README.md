@@ -91,8 +91,12 @@ Rescue-Animal-android/
 
 ---
 
-## 🔔 Notifications
+🔔 **Notifications**
 
+* Uses **Firebase Cloud Messaging (FCM)** to send notifications.
+* Volunteers receive a notification when a new animal rescue request is submitted.
+* Volunteers can **Accept or Reject** the rescue request.
+* Users can receive updates about the **rescue request status**.
 
 
 
